@@ -17,8 +17,8 @@ CHIP Or {
     // Put your code here:
     // Not(A or B) = not(A) and not(B)
     //Not(Not(A or B)) = A or B
-     Not(in = a, out = notOutA);
-     Not(in = b, out = notOutB);
-     And(a = notOutA, b = notOutB, out = andOut);
-     Not(in = andOut, out = out);
+    Not(in = a, out = notOutA);
+    Not(in = b, out = notOutB);
+    And(a = notOutA, b = notOutB, out = andOut);
+    Not(in = andOut, out = out);
 }
