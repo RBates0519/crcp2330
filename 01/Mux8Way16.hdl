@@ -19,4 +19,15 @@ CHIP Mux8Way16 {
 
     PARTS:
     // Put your code here:
+    Mux16(a = a, b = b, sel = sel[0], out = top1); 
+   	Mux16(a = c, b = d, sel = sel[0], out = top2);
+
+   	Mux16(a = e, b = f, sel = sel[0], out = bot1);
+   	Mux16(a = g, b = h, sel = sel[0], out = bot2);
+
+   	Mux16(a = top1, b = top2, sel = sel[1], out = topF);
+   	Mux16(a = bot1, b = bot2, sel = sel[1], out = botF);
+
+	Mux16(a = topF, b = botF, sel = sel[2], out = out);
+
 }
