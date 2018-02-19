@@ -28,6 +28,6 @@ CHIP Mux8Way16 {
    	Mux16(a = top1, b = top2, sel = sel[1], out = topF);
    	Mux16(a = bot1, b = bot2, sel = sel[1], out = botF);
 
-	Mux16(a = topF, b = botF, sel = sel[2], out = out);
+	  Mux16(a = topF, b = botF, sel = sel[2], out = out);
 
 }
