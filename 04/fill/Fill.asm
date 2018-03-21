@@ -58,3 +58,7 @@
     
     @INNER
     0;JMP   // goto INNER
+
+    (BRANCH)
+    @BRANCH
+    0;JMP       //endless loop

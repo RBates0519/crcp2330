@@ -39,3 +39,7 @@ M=M-1
 D=M
 @R2
 M=D   	//store sum result in R2
+
+(BRANCH)
+@BRANCH
+0;JMP
