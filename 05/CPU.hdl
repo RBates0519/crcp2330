@@ -39,17 +39,26 @@ CHIP CPU {
         pc[15];          // address of next instruction
 
     PARTS:
-    // Put your code here:
+    //See if A or C instruction
+    Not(in = instruction[15], out = Ainstruction);
+
+    And(a = instruction[15], b = instruction[5], out = ALUtoA);
+    Mux16(a = instruction, b = ALUout, sel = ALUtoA, out = registerAin);
+
+    Or(a = Ainstruction, b = ALUtoA, out = loadA);
+    ARegister(in = registerAin,load = loadA,out = Aout);
 
     //sel is the 'a' bit in the instruction
     Mux16(a = Aout, b = inM, sel = instruction[12], out = AMout);
 
 
-    PC(in= ,load= ,inc= ,reset= ,out= );
-    ALU(x= ,y= ,zx= ,nx= ,zy= ,ny= ,ny= ,f= ,no= ,out= ,zr= ,ng= );
+    And(a = instruction[15], b = instruction[4], out = loadD);
+    DRegister(in = ALUout,load = loadD,out = Dout);
 
-    ARegister(in= ,load= ,out= );
-    DRegister(in= ,load= ,out= );
+
+
+    PC(in = Aout,load = ,inc= ,reset= ,out= );
+    ALU(x= ,y= ,zx= ,nx= ,zy= ,ny= ,ny= ,f= ,no= ,out= ,zr= ,ng= );
 
 
 
