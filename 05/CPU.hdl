@@ -64,10 +64,13 @@ CHIP CPU {
     And(instruction[15], b = instruction[3], out = writeM);
 
 
+    // load PC with A reg?
+    And(a=ZRout, b=instruction[1], out=jeq);    // jump if zero set to 1
+    And(a=NGout, b=instruction[2], out=jlt);    // jump if neg is set to 1
+    Or(a=ZRout, b=NGout, out=zrOrNg);
+    Not(in=zrOrNg, out=positive);            // is positive (not zero and not neg)
+
+
     PC(in = Aout,load = ,inc= ,reset= ,out= );
     
-
-
-
-
 }
