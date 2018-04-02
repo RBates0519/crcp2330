@@ -65,12 +65,17 @@ CHIP CPU {
 
 
     // load PC with A reg?
-    And(a=ZRout, b=instruction[1], out=jeq);    // jump if zero set to 1
-    And(a=NGout, b=instruction[2], out=jlt);    // jump if neg is set to 1
+    And(a=ZRout, b=instruction[1], out=jEQ);    // jump if zero set to 1
+    And(a=NGout, b=instruction[2], out=jLT);    // jump if neg is set to 1
     Or(a=ZRout, b=NGout, out=zrOrNg);
     Not(in=zrOrNg, out=positive);            // is positive (not zero and not neg)
 
 
-    PC(in = Aout,load = ,inc= ,reset= ,out= );
+    And(a=positive, b=instruction[0], out=jGT); // is pos and jump if pos
+    Or(a=jEQ, b=jLT, out=jLE);
+    Or(a=jLE, b=jGT, out=jumpToA);              // load PC if cond met and jump if cond
+    And(a=Cinstruction, b=jumpToA, out=PCload); // Only jump if C instruction
+    Not(in=PCload, out=PCinc);                  // only inc if not load
+    PC(in=Aout, inc=PCinc, load=PCload, reset=reset, out[0..14]=pc);
     
 }
