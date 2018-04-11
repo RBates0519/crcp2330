@@ -1,0 +1,37 @@
+//Author: Riley Bates
+
+/** Implements a graphical circle. */
+class Circle {
+
+   field int x, y; // screen location of center of circle
+   field int radius; // radius of this circle, in pixels
+
+   /** Constructs a new circle with a given location and size. */
+   constructor Circle new(int Ax, int Ay, int Arad) {
+      let x = Ax;
+      let y = Ay;
+      let radius = Arad;
+      do draw();
+      return this;
+   }
+
+   /** Disposes this circle. */
+   method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+   }
+
+   /** Draws the circle on the screen. */
+   method void draw() {
+      do Screen.setColor(true);
+      do Screen.drawCircle(x, y, radius);
+      return;
+   }
+
+   /** Erases the circle from the screen. */
+   method void erase() {
+      do Screen.setColor(false);
+      do Screen.drawCircle(x, y, radius);
+      return;
+   }
+}

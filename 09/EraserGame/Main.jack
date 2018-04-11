@@ -1,0 +1,12 @@
+//Author: Riley Bates
+
+/** Initializes a new game and start running it. */
+class Main {
+    function void main() {
+        var EraserGame game;
+        let game = EraserGame.new();
+        do game.run();
+        do game.dispose();
+        return;
+    }
+}
