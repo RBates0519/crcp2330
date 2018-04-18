@@ -10,6 +10,8 @@ class EraserGame {
    field Square square3;
    field Square square4;
    field Square square5;
+   field Square square6;
+   field Square square7;
 
    field Circle circle;
    field Circle circle2;
@@ -18,6 +20,7 @@ class EraserGame {
    field Circle circle5;
    field Circle circle6;
    field Circle circle7;
+   field Circle circle8;
 
    field int direction; // the square's current direction: 
                         // 0=none, 1=up, 2=down, 3=left, 4=right
@@ -26,14 +29,16 @@ class EraserGame {
    constructor EraserGame new() {
       // Creates a 30 by 30 pixels square and positions it at the top-left
       // of the screen.
-      do Output.printString("                       Clean the screen!");
+      do Output.printString("          Use the arrow keys to clean the screen!");
       let square = Square.new(0, 0, 30);
 
 
       let square2 = Square.new(425,100,20);
       let square3 = Square.new(315,190,40);
       let square4 = Square.new(90,90,50);
-      let square5= Square.new(230,80,65);
+      let square5 = Square.new(230,80,65);
+      let square6 = Square.new(130,200,47);
+      let square7 = Square.new(370,115,30);
 
       let circle = Circle.new(350,90,10);
       let circle2 = Circle.new(200,200,15);
@@ -42,6 +47,7 @@ class EraserGame {
       let circle5 = Circle.new(180,70,25);
       let circle6 = Circle.new(380,40,22);
       let circle7 = Circle.new(50,90,20);
+      let circle8 = Circle.new(250,180,25);
 
       let direction = 0;  // initial state is no movement
       return this;
@@ -54,6 +60,8 @@ class EraserGame {
       do square3.dispose();
       do square4.dispose();
       do square5.dispose();
+      do square6.dispose();
+      do square7.dispose();
 
       do circle.dispose();
       do circle2.dispose();
@@ -62,6 +70,7 @@ class EraserGame {
       do circle5.dispose();
       do circle6.dispose();
       do circle7.dispose();
+      do circle8.dispose();
       
       do Memory.deAlloc(this);
       return;
