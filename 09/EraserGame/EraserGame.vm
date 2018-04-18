@@ -1,5 +1,5 @@
 function EraserGame.new 0
-push constant 7
+push constant 13
 call Memory.alloc 1
 pop pointer 0
 push constant 40
@@ -101,23 +101,53 @@ push constant 190
 push constant 40
 call Square.new 3
 pop this 2
+push constant 90
+push constant 90
+push constant 50
+call Square.new 3
+pop this 3
+push constant 230
+push constant 80
+push constant 65
+call Square.new 3
+pop this 4
 push constant 350
 push constant 90
 push constant 10
 call Circle.new 3
-pop this 3
+pop this 5
 push constant 200
 push constant 200
 push constant 15
 call Circle.new 3
-pop this 4
+pop this 6
 push constant 75
 push constant 180
 push constant 30
 call Circle.new 3
-pop this 5
+pop this 7
+push constant 430
+push constant 200
+push constant 20
+call Circle.new 3
+pop this 8
+push constant 180
+push constant 70
+push constant 25
+call Circle.new 3
+pop this 9
+push constant 380
+push constant 40
+push constant 22
+call Circle.new 3
+pop this 10
+push constant 50
+push constant 90
+push constant 20
+call Circle.new 3
+pop this 11
 push constant 0
-pop this 6
+pop this 12
 push pointer 0
 return
 function EraserGame.dispose 0
@@ -130,16 +160,34 @@ push this 1
 call Square.dispose 1
 pop temp 0
 push this 2
-call square.dispose 1
+call Square.dispose 1
 pop temp 0
 push this 3
-call Circle.dispose 1
+call Square.dispose 1
 pop temp 0
 push this 4
-call Circle.dispose 1
+call Square.dispose 1
 pop temp 0
 push this 5
-call circle.dispose 1
+call Circle.dispose 1
+pop temp 0
+push this 6
+call Circle.dispose 1
+pop temp 0
+push this 7
+call Circle.dispose 1
+pop temp 0
+push this 8
+call Circle.dispose 1
+pop temp 0
+push this 9
+call Circle.dispose 1
+pop temp 0
+push this 10
+call Circle.dispose 1
+pop temp 0
+push this 11
+call Circle.dispose 1
 pop temp 0
 push pointer 0
 call Memory.deAlloc 1
@@ -149,7 +197,7 @@ return
 function EraserGame.moveSquare 0
 push argument 0
 pop pointer 0
-push this 6
+push this 12
 push constant 1
 eq
 if-goto IF_TRUE0
@@ -159,7 +207,7 @@ push this 0
 call Square.moveUp 1
 pop temp 0
 label IF_FALSE0
-push this 6
+push this 12
 push constant 2
 eq
 if-goto IF_TRUE1
@@ -169,7 +217,7 @@ push this 0
 call Square.moveDown 1
 pop temp 0
 label IF_FALSE1
-push this 6
+push this 12
 push constant 3
 eq
 if-goto IF_TRUE2
@@ -179,7 +227,7 @@ push this 0
 call Square.moveLeft 1
 pop temp 0
 label IF_FALSE2
-push this 6
+push this 12
 push constant 4
 eq
 if-goto IF_TRUE3
@@ -234,7 +282,7 @@ if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
 push constant 1
-pop this 6
+pop this 12
 label IF_FALSE1
 push local 0
 push constant 133
@@ -243,7 +291,7 @@ if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
 push constant 2
-pop this 6
+pop this 12
 label IF_FALSE2
 push local 0
 push constant 130
@@ -252,7 +300,7 @@ if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
 push constant 3
-pop this 6
+pop this 12
 label IF_FALSE3
 push local 0
 push constant 132
@@ -261,7 +309,7 @@ if-goto IF_TRUE4
 goto IF_FALSE4
 label IF_TRUE4
 push constant 4
-pop this 6
+pop this 12
 label IF_FALSE4
 label WHILE_EXP2
 push local 0
