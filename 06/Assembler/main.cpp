@@ -35,8 +35,9 @@ int main(int argc, char **argv)
     else
     {
         string inputFile = argv[1];
+        cout << "Input file is " << inputFile << endl;
         Parser parser(inputFile);
-        //parser.decode();
+        parser.translate();
     }
 
     return 0;
