@@ -1,15 +1,19 @@
 #ifndef TRANSLATOR_H_
 #define TRANSLATOR_H_
 
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
+#include <cassert>
+#include <iostream>
 using namespace std;
 
 class Translator {
 private:
-	unordered_map<string, int> opcodes_;
-	unordered_map<string, int> jumps_;
-	unordered_map<string, int> dests_;
+	unordered_map<string, uint16_t> 	opcodes_;
+	unordered_map<string, uint16_t> 	jumps_;
+	unordered_map<string, uint16_t> 	dests_;
+	uint16_t 						stack_pointer_;
+	unordered_map<string, uint16_t> 	symbol_table_;
 public:
 	Translator();
 	virtual ~Translator();
