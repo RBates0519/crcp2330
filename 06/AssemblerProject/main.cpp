@@ -24,14 +24,10 @@ using namespace std;
 // arg 1 - Prog.asm file to be assembled into binary code
 int main(int argc, char **argv)
 {
-
-    // run tests
     if (argc < 1)
     {
     		cout << "Error: no file is specified." << endl;
     }
-
-    // find flight paths
     else
     {
         string inputFile = argv[1];

@@ -1,4 +1,3 @@
-using namespace std;
 #include <clocale>
 #include <stdio.h>
 #include <ctype.h>
@@ -6,6 +5,8 @@ using namespace std;
 #include <dirent.h>
 
 #include "Parser.h"
+
+using namespace std;
 
 Parser::Parser()
 {
@@ -74,12 +75,38 @@ void Parser::translate()
 
 void Parser::decode()
 {
-	string field;
-	getline(input,field);
-	cout << "Read: " << field;
+	string command, hack_command;
+	getline(input,command);
+	cout << "\n\nRead: " << command;
 
-	rmvWhiteSpace(field);
-	cout << "Line now holds: " << field << "\n" << endl;
+	rmvWhiteSpace(command);
+	cout << "Line now holds: " << command << endl;
+
+	// comments, blank line, or labels do nothing
+	if (command.substr(0, 1) == "/" || command.substr(0, 1) == "" || command.substr(0, 1) == "(")
+	{
+		;
+	}
+	// A command, call the A translation function
+	else if (command.substr(0, 1) == "@")
+	{
+		bool has_only_digits = (command.find_first_not_of( "0123456789" ) == string::npos);
+		//@17 or some number
+		if (has_only_digits)
+		{
+			//translate A command
+		}
+		//@var
+		else //user defined symbol
+		{
+			//translate
+		}
+	}
+	// C command, call the C translation function
+	else
+	{
+
+	}
 
 }
 
@@ -98,4 +125,12 @@ void Parser::rmvWhiteSpace(string &line)
 	}
 
 	line.erase(line.find_last_not_of(blank_spaces)+1, std::string::npos);
+}
+
+bool Parser::isComment(string& line) const {
+// PRE: The line has been trimmed of whitespaces on the left.
+	if (line.find("//") == 0)
+		return true;
+	else
+		return false;
 }

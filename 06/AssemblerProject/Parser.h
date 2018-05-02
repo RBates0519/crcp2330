@@ -7,6 +7,7 @@
 #include <sstream>
 #include <algorithm>
 #include <vector>
+#include "Translator.h"
 
 using namespace std;
 
@@ -15,6 +16,7 @@ class Parser
     private:
         fstream input;
         fstream output;
+        Translator translator;
     public:
         //Constructors
         Parser();
