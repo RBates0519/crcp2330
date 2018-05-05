@@ -97,22 +97,22 @@ int Translator::comp(const string& s) const {
 	if (opcodes_.count(s))
 		return opcodes_.at(s);
 	cerr << "Error: '" << s << "' invalid operation." << endl;
-	throw std::runtime_error("Invalid operation");
+	throw runtime_error("Invalid operation");
 }
 
 int Translator::dest(const string& s) const {
 	if (dests_.count(s))
 		return dests_.at(s);
-	std::cerr << "Error: '" << s << "' invalid destination operand.";
-	std::cerr << std::endl;
-	throw std::runtime_error("Invalid destination");
+	cerr << "Error: '" << s << "' invalid destination operand.";
+	cerr << endl;
+	throw runtime_error("Invalid destination");
 }
 
 int Translator::jump(const string& s) const {
 	if (jumps_.count(s))
 		return jumps_.at(s);
-	std::cerr << "Error: '" << s << "' invalid jump mnemonic.";
-	std::cerr << std::endl;
-	throw std::runtime_error("Invalid jump");
+	cerr << "Error: '" << s << "' invalid jump mnemonic.";
+	cerr << endl;
+	throw runtime_error("Invalid jump");
 }
 

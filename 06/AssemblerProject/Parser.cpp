@@ -128,7 +128,6 @@ void Parser::rmvWhiteSpace(string &line)
 }
 
 bool Parser::isComment(string& line) const {
-// PRE: The line has been trimmed of whitespaces on the left.
 	if (line.find("//") == 0)
 		return true;
 	else
