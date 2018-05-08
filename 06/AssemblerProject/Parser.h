@@ -7,7 +7,7 @@
 #include <sstream>
 #include <algorithm>
 #include <vector>
-#include "Translator.h"
+#include "translator.h"
 
 using namespace std;
 
