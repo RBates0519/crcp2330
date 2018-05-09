@@ -14,7 +14,7 @@ Parser::Parser()
 
 Parser::Parser(string fileName)
 {
-        cout << "ASM file to translate: " << fileName << endl;
+        cout << "\e[1m\e[34mASM file to translate: \e[0m" << fileName << endl;
 
         //Open fstream for input
         input.open(fileName,ifstream::in);
@@ -36,7 +36,7 @@ Parser::Parser(string fileName)
             exit(0);
         }
         else
-            cout << "Opened: " << outFile << " for output!" << endl;
+            cout << "\e[1m\e[34mOpened: " << outFile << " for output!\e[0m" << endl;
 }
 
 Parser::~Parser()
@@ -46,13 +46,13 @@ Parser::~Parser()
 
 void Parser::translate()
 {
-    cout << "////Now translating!\\\\\\\\\n" << endl;
+    cout << "\e[1m\e[33mNow translating!\e[0m\n" << endl;
     while(true)
     {
         if( input.eof() ) break;
         decode();
     }
-    cout << "\\\\\\\\Finished reading file!////" << endl;
+    cout << "\n\e[1m\e[33mFinished reading file!\e[0" << endl;
 }
 
 
@@ -60,10 +60,9 @@ void Parser::decode()
 {
     string command, hack_command;
     getline(input,command);
-    cout << "\n\nRead: " << command;
 
     rmvWhiteSpace(command);
-    cout << "Line now holds: " << command << endl;
+    cout << "\n\e[1mInstruction is: \e[0m" << command << endl;
 
     // comments, blank line, or labels do nothing
     if (command.substr(0, 1) == "/" || command.substr(0, 1) == "" || command.substr(0, 1) == "(")
@@ -74,24 +73,27 @@ void Parser::decode()
     else if (command.substr(0, 1) == "@")
     {
         bool has_only_digits = (command.find_first_not_of( "0123456789" ) == string::npos);
-        //@17 or some number
-        if (has_only_digits)
+        //Ex: @17 or some number
+        if (isdigit(command[1]))
         {
             //translate A command
             hack_command = translator.transA_Command(command.substr(1, command.length() - 1));
+            output << hack_command << endl;
         }
         //@var
         else //user defined symbol
         {
             //translate
-            translator.itos(SymbolTable[command.substr(1, command.length() - 1)]);
-            hack_command = translator.transA_Command("");
+            string symbol = translator.getSymbolVal(command.substr(1, command.length() - 1));
+            hack_command = translator.transA_Command(symbol);
+            output << hack_command << endl;
         }
     }
     // C command, call the C translation function
     else
     {
-
+        hack_command = translator.transC_Command(command);
+        output << hack_command << endl;
     }
 
 }
