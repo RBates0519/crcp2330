@@ -17,6 +17,10 @@ class Parser
         fstream input;
         fstream output;
         Translator translator;
+
+        uint16_t stack_pointer_;
+        unordered_map<string, string> 	symbol_table_;
+        vector<string> symbol_names_;
     public:
         //Constructors
         Parser();
@@ -29,6 +33,8 @@ class Parser
 
         void rmvWhiteSpace(string&);
         bool isComment(string&) const;
+
+        bool isSymbol(string s);
 
 };
 

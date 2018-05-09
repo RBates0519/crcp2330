@@ -4,8 +4,7 @@
 #include <cstring>
 #include <string>
 
-#include "Parser.h"
-
+#include "parser.h"
 using namespace std;
 
 /*
@@ -26,7 +25,7 @@ int main(int argc, char **argv)
 {
     if (argc < 1)
     {
-    		cout << "Error: no file is specified." << endl;
+            cout << "Error: no file is specified." << endl;
     }
     else
     {

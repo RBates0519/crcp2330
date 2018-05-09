@@ -10,20 +10,17 @@ using namespace std;
 
 class Translator {
 private:
-    unordered_map<string, uint16_t> 	opcodes_;
-    unordered_map<string, uint16_t> 	jumps_;
-    unordered_map<string, uint16_t> 	dests_;
-    uint16_t stack_pointer_;
-    unordered_map<string, uint16_t> 	symbol_table_;
+    unordered_map<string, string> 	opcodes_;
+    unordered_map<string, string> 	jumps_;
+    unordered_map<string, string> 	dests_;
 public:
     Translator();
     ~Translator();
-    string transA_Command(string param);
-    string transC_Command();
-    int comp(const string&) const;
-    int dest(const string&) const;
-    int jump(const string&) const;
-    string intToStr(int i);
+    string transA_Command(string);
+    string transC_Command(string);
+    string getComp(const string&) const;
+    string getDest(const string&) const;
+    string getJump(const string&) const;
 };
 
 #endif /* TRANSLATOR_H_ */
